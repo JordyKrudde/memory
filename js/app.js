@@ -3,6 +3,7 @@ let cards = ["fas fa-hamburger", "fas fa-hamburger", "fas fa-pepper-hot", "fas f
 let tempArray = [];
 let match = [];
 
+
 //shuffle cards
 cards = cards.sort(() => Math.random() - 0.5)
 
@@ -17,33 +18,47 @@ $("#field").append(html);
 
 //klikbaar en omdraaien van kaarten
 $("#field").on("click", "li", function(){
-    if(!$(this).hasClass("open") && !$(this).hasClass("match") && !$(this).hasClass("wrong")){
+    
+    if(!$(this).hasClass("open") && !$(this).hasClass("match") && !$(this).hasClass("wrong") && (tempArray.length <= 1)){
         $(this).addClass("open");
+        tempArray.push(this);
+        let arrayLength = tempArray.length;
+            if(arrayLength === 2){
+                checkMatch()
+            }
     };
 });
 
 
 // in tempArray zetten en checken of matched.
 function checkMatch() {
-    tempArray.puch(this);
-    let arrayLength = tempArray.length;
-    if(arrayLength === 2){
-        //moveCounter();
-        if(tempArray[0].type === tempArray[1]){
-            //matched();
+        if(tempArray[0] === tempArray[1]){
+            matched();
+            console.log("goed");
         }
         else{
-            //wrong();
+            wrong();
+            console.log("fout");
+            setTimeout(closeCard, 2000);
         }
     }
-};
+
 
 
 // wat te doen als cards matchen
-function match(){
-    tempArray[0].addClass("match");
-    tempArray[1].addClass("match");
-    tempArray[0].removeClass("open");
-    tempArray[1].removeClass("open");
+function matched(){
+    $(".open").addClass("card open match");
+    tempArray = [];
+}
+
+// wat als geen match
+function wrong(){
+   // $(".open").toggleClass().delay(10).addClass("card open wrong");
+    $(".open").addClass("wrong");
+  
+}
+
+function closeCard(){
+    $(".open").removeClass("open wrong");
     tempArray = [];
 }

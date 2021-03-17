@@ -49,11 +49,14 @@ body{
 }
 
 .match{
-	background-color: rgb(0, 171, 214);
+	background-color: rgb(66, 243, 146);
 	font-size: 20px;
 }
 
-
+.wrong{
+	background-color: rgb(245, 76, 53);
+	font-size: 20px;
+}
 
 /** score bord style */
 
