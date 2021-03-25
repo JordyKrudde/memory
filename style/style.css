@@ -86,3 +86,7 @@ body{
 .fa-star{
 	color: #FFD700;
 }
+
+.darkStar{
+	color: grey;
+}
