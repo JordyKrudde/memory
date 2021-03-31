@@ -31,7 +31,7 @@ $("#field").on("click", "li", function(){
             }
     };
 
-    //timer
+//timer en score systeem
 if(moves == 1){
     let sec = 0;
         function pad(val) {
@@ -57,9 +57,13 @@ if(moves == 1){
             }
         }
     }
-
 });
 
+//herstart
+$(".refresh").on("click", "i", function(){
+    location.reload();
+    console.log("click");
+})
 
 // in tempArray zetten en checken of matched.
 function checkMatch() {
@@ -98,4 +102,7 @@ function finished() {
     }
 }
 
-
+$("#playAgain").on("click", function(){
+    location.reload()
+    console.log("click");
+})
